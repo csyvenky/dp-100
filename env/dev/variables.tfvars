@@ -20,10 +20,17 @@ kv_name = "dp-100-kv-dev"
 # secrets.tfvars for FW IPs
 
 #
+# Azure Container Registry for Machine Learning Workspace
+#
+acr_name          = "dp100acrdev"
+acr_sku           = "Basic"
+acr_admin_enabled = true
+
+#
 # Machine Learning Workspace
 #
 app_insights_name  = "dp-100-ai-dev"
 mlws_name          = "mlws-dev"
-mlws_sku           = "Basic"
+mlws_sku           = "Enterprise"
 mlws_description   = "This is the Development version of the Azure ML Workspace."
 mlws_friendly_name = "My Dev ML Workspace"

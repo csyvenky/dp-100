@@ -25,7 +25,9 @@ resource "azurerm_resource_group" "rg" {
   location = var.rg_location
 }
 
+#
 # Application Insights for Machine Learning Workspace
+#
 resource "azurerm_application_insights" "app_insights" {
   name                = var.app_insights_name
   resource_group_name = azurerm_resource_group.rg.name
@@ -85,7 +87,20 @@ resource "azurerm_key_vault" "kv" {
   }
 }
 
+#
+# Azure Container Registry for Machine Learning Workspace
+#
+resource "azurerm_container_registry" "acr" {
+  name                = var.acr_name
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  sku                 = var.acr_sku
+  admin_enabled       = var.acr_admin_enabled
+}
+
+#
 # Machine Learning Workspace
+#
 resource "azurerm_machine_learning_workspace" "mlws" {
   name                    = var.mlws_name
   resource_group_name     = azurerm_resource_group.rg.name
@@ -93,10 +108,10 @@ resource "azurerm_machine_learning_workspace" "mlws" {
   application_insights_id = azurerm_application_insights.app_insights.id
   key_vault_id            = azurerm_key_vault.kv.id
   storage_account_id      = azurerm_storage_account.sa.id
-  # eventually for model deployment we'll need the container_registry_id property.
-  sku_name      = var.mlws_sku
-  description   = var.mlws_description
-  friendly_name = var.mlws_friendly_name
+  container_registry_id   = azurerm_container_registry.acr.id
+  sku_name                = var.mlws_sku
+  description             = var.mlws_description
+  friendly_name           = var.mlws_friendly_name
 
   identity {
     type = "SystemAssigned"

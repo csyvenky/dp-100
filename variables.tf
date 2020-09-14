@@ -26,6 +26,13 @@ variable "kv_name" {}
 variable "kv_ip_fw" {}
 
 #
+# Azure Container Registry for Machine Learning Workspace
+#
+variable "acr_name" {}
+variable "acr_sku" {}
+variable "acr_admin_enabled" {}
+
+#
 # Machine Learning Workspace
 #
 variable "app_insights_name" {}
