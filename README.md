@@ -28,3 +28,6 @@ terraform fmt; terraform fmt .\env\<env>\
 ```
 terraform destroy --var-file=env/<env>/variables.tfvars --var-file=secrets/secrets.tfvars [-auto-approve]
 ```
+
+# Created Azure Resources
+![Created Azure Resources](https://raw.githubusercontent.com/csyvenky/dp-100/master/az-resources.PNG "Created Azure Resources")
