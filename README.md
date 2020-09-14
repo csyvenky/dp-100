@@ -1,5 +1,5 @@
 # dp-100
-Terraform IaC for the MS DP-100 Exam
+Terraform IaC for the MS DP-100 exam preparation and studying.
 
 ## Notes
 - n/a
